@@ -19,7 +19,6 @@ public class bool_eval implements booleanExpression {
 				{
 					a = s.charAt(i)=='T'?true:false;
 					a_val = true;
-
 				}
 				else if(b_val == false)
 				{
@@ -39,7 +38,7 @@ public class bool_eval implements booleanExpression {
 			if(a_val == true && b_val == true) 
 			{
 				a = (op==1)?a||b:a&&b;
-				a_val = b_val = false;
+				b_val = false;
 			}
 			
 		}
