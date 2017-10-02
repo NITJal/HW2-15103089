@@ -1,7 +1,13 @@
 import java.util.Scanner;
 
-public class bool_eval {
-	public static boolean boolex_eval(String s)
+interface booleanExpression
+{
+  public boolean EvaluateExpression(String s);
+
+}
+
+public class bool_eval implements booleanExpression {
+	public boolean EvaluateExpression(String s)
 	{
 		boolean a=true, b=true, a_val=false, b_val=false;
 		int op=1, n = s.length();
@@ -27,7 +33,7 @@ public class bool_eval {
 			}
 			else if(s.charAt(i)=='(' && i!=0)
 			{
-				b = boolex_eval(s.substring(i+1));
+				b = EvaluateExpression(s.substring(i+1));
 				b_val = true;
 			}
 			if(a_val == true && b_val == true) 
@@ -44,7 +50,8 @@ public class bool_eval {
 		Scanner sc = new Scanner(System.in);
 		String str = sc.nextLine();
 		sc.close();
-		boolean ans = boolex_eval(str);
+		bool_eval a = new bool_eval();
+		boolean ans = a.EvaluateExpression(str);
 		System.out.println(ans);
 	}
 }
